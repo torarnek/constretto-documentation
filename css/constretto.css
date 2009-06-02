@@ -10,10 +10,17 @@ body#index {
     font-family: 'georgia', 'bitstream vera serif', serif;
     padding-left: 300px;
     padding-top: 100px;
+    font-size: 16px;
 }
 
 body#index h1 {
     font-size: 72px;
+    color: rgb(35,31,32);
+    font-weight:bold;
+}
+
+body#index h2 {
+    font-size: 50px;
     color: rgb(35,31,32);
     font-weight:bold;
 }

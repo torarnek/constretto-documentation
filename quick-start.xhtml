@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Constretto - Quick Start</title>
+    <link rel="stylesheet" href="css/sh_ide-idea.css"/>
+    <script type="text/javascript" src="js/sh_main.js"></script>
+    <script type="text/javascript" src="js/sh_xml.js"></script>
+    <script type="text/javascript" src="js/sh_properties.js"></script>
+    <script type="text/javascript" src="js/sh_java.js"></script>
+    <link rel="stylesheet" href="css/constretto.css"/>
+</head>
+
+<body id="index" onload="sh_highlightDocument();">
+<h1>Constretto Quick Start</h1>
+
+<h2>First Install Constretto</h2>
+
+<p>
+    Constretto is built with maven, so if you are using maven, you can simply add Constretto as dependencies in your
+    pom:
+</p>
+
+        <pre class="sh_xml">
+            &lt;dependencies&gt;
+                ...
+                &lt;dependency&gt;
+                    &lt;groupId&gt;org.constretto&lt;/groupId&gt;
+                    &lt;artifactId&gt;constretto-api&lt;/artifactId&gt;
+                    &lt;version&gt;1.0-rc-4&lt;/version&gt;
+                &lt;/dependency&gt;
+                &lt;dependency&gt;
+                    &lt;groupId&gt;org.constretto&lt;/groupId&gt;
+                    &lt;artifactId&gt;constretto-core&lt;/artifactId&gt;
+                    &lt;version&gt;1.0-rc-4&lt;/version&gt;
+                    &lt;scope&gt;runtime&lt;/scope&gt;
+                &lt;/dependency&gt;
+                ----
+            &lt;/dependencies&gt;
+        </pre>
+
+If you would like to use the Spring support add:
+        <pre class="sh_xml">
+            &lt;dependency&gt;
+                &lt;groupId&gt;org.constretto&lt;/groupId&gt;
+                &lt;artifactId&gt;constretto-spring&lt;/artifactId&gt;
+                &lt;version&gt;1.0-rc-4&lt;/version&gt;
+                &lt;scope&gt;runtime&lt;/scope&gt;
+            &lt;/dependency&gt;
+        </pre>
+
+These artifacts are currently not published to the main maven repository, so in order to download them add the following
+repository definition in your pom:
+        <pre class="sh_xml">
+            &lt;repositories&gt;
+                &lt;repository&gt;
+                  &lt;id&gt;constretto.org&lt;/id&gt;
+                  &lt;name&gt;Constretto public maven repository&lt;/name&gt;
+                  &lt;url&gt;http://repo.constretto.org/content/repositories/releases&lt;/url&gt;
+                &lt;/repository&gt;
+              &lt;/repositories&gt;
+        </pre>
+
+<h2>Then Configure it...</h2>
+
+<h3>Eihter With Spring...</h3>
+
+<pre class="sh_xml">
+	&lt;beans xmlns="http://www.springframework.org/schema/beans"
+	       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	       xmlns:constretto="http://constretto.org/schema/constretto"
+	       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	           http://constretto.org/schema/constretto
+	           http://constretto.org/schema/constretto/constretto-1.0.xsd"&gt;
+
+	    &lt;constretto:configuration&gt;
+	        &lt;constretto:stores&gt;
+	            &lt;constretto:properties-store&gt;
+	                &lt;constretto:resource location="classpath:properties/test1.properties"/&gt;
+	            &lt;/constretto:properties-store&gt;
+	        &lt;/constretto:stores&gt;
+	    &lt;/constretto:configuration&gt;
+	&lt;/beans&gt;
+</pre>
+
+
+<h3>Or By Using The Java API</h3>
+
+<pre class="sh_java">
+	ConstrettoConfiguration config =
+	                new ConstrettoBuilder()
+	                        .createPropertiesStore()
+	                            .addResource(new DefaultResourceLoader().getResource("classpath:test1.properties"))
+	                        .done()
+	                        .getConfiguration();
+</pre>
+
+<h2>Annotate Your Classes With Configuration Instructions</h2>
+
+
+<pre class="sh_java">
+	public class DataSourceConfiguration {
+
+	    private String myUrl;
+	    private String myPassword;
+	    
+		
+	    @Configure
+	    public void configure(String url, @Configuration(expression = "password") String secret) {
+	        this.myUrl = url;
+	        this.myPassword = secret;
+	    }
+
+	    public String getUrl() {
+	        return myUrl;
+	    }
+
+	    public String getPassword() {
+	        return myPassword;
+	    }
+
+	}
+</pre>
+
+<h2>Tell Constretto to inject configuration</h2>
+
+If you are using spring, this is done automaticly for you, but if you use the Java API, this is done as shown in the
+example below:
+<pre class="sh_java">
+    public class MyApp{
+        public static void main(String[] args){
+            ConstrettoConfiguration configuration = buildConfig();
+            MyConfiguredClass myConfiguredClass = new MyConfiguredClass();
+            configuration.on(myConfiguredClass);
+        }
+    }
+</pre>
+
+<h2>Tag your properties</h2>
+
+One of the key features of Constretto is the ability to tag properties in the property files. When no tag is present
+the value is considered default, but if tagged, it will only be available if your application is started with that
+tag in the tags list (see next section)
+
+<pre class="sh_properties">
+    key1 = default value for key1
+    key2 = default value for key2
+
+    @some tag.key1 = value in tag "some tag" for key1
+    @some tag.key2 = value in tag "some tag" for key2
+</pre>
+
+<h2>Tell Constretto What Tags To Use When looking Up Values</h2>
+
+<pre class="sh_sh">
+    java -jar myapp.jar MyMain -DCONSTRETTO_TAGS=development,linux,mock, some tag
+</pre>
+
+or :
+
+<pre class="sh_sh">
+    export CONSTRETTO_TAGS=development,linux,mock, some tag
+    java -jar myapp.jar MyMain
+</pre>
+
+
+<br/>
+<br/>
+<br/>
+
+<h3>
+    That should be it, and your application should start up and be fully configured.
+</h3>
+</body>
+</html>
