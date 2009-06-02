@@ -18,7 +18,6 @@
 <ul>
     <li>Deployed Spring namespace schema to http://constretto.org/schema</li>
     <li>!!Renamed constretto.xsd -> constretto-1.0.xsd, this is a change to the public api, and will break applications using previous versions!!</li>
-
 </ul>
 
 <h2>1.0-rc-4 (1.jun-2009)</h2>
@@ -26,6 +25,7 @@
     <li>Added Junit testing support</li>
     <li>Added @Tags that can be used to inject the current configured tags Constretto uses for value lookup</li>
     <li>Now have more sensible error messages when PropertyPlaceholder cannot resolve values</li>
+    <li>!!Moved @Environment and AssemblyContextResolver from the constretto-api to constretto-spring. This is a change to the public API and will break applications using previous versions!!</li>
 </ul>
 
 
