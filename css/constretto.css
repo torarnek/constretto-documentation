@@ -1,0 +1,125 @@
+html, body {
+    height: 100%;
+
+    font-family: Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+body#index {
+    background: #FFFFFF url("../img/clef-gray.jpg") no-repeat fixed top left;
+    font-family: 'georgia', 'bitstream vera serif', serif;
+    padding-left: 300px;
+    padding-top: 100px;
+}
+
+body#index h1 {
+    font-size: 72px;
+    color: rgb(35,31,32);
+    font-weight:bold;
+}
+
+bosy#index pre {
+    letter-spacing: 4px;
+    line-height: 1.25;
+    text-transform: uppercase;
+}
+
+body#index a {
+    font-size: 36px;
+    color: rgb(81,82,84);
+    padding-left: 40px;
+    text-decoration: none;
+}
+
+body#index a:hover {
+    text-decoration: underline;
+}
+
+.header {
+    width: 1024px;
+    height: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 28px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 550px;
+}
+
+.toc .title {
+    font-weight: bold;
+    font-size: 18px;
+    width: auto;
+}
+
+.toc .section {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.toc .subsection {
+    font-weight: bold;
+    font-size: 12px;
+    margin-left: 15px;
+}
+
+.toc li {
+    list-style: none;
+}
+
+.section h1 {
+    font-weight: bold;
+    font-size: 18px;
+    width: auto;
+}
+
+.section h2 {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.section .example {
+    font-style: italic;
+    margin-left: 15px;
+}
+
+.code {
+    margin-top: 10px;
+    font-style: normal;
+}
+
+.code .reserved {
+    color: darkblue;
+}
+
+.code .annotation {
+    color: rgb(128, 128, 0)
+}
+
+.java .reserved {
+    font-weight: bold;
+}
+
+.ident {
+    margin-left: 15px;
+}
+
+.ident-2 {
+    margin-left: 30px;
+}
+
+.code .value {
+    color: darkgreen;
+}
+
+.code .variable {
+    color: purple;
+}
+
+.code p {
+    margin: auto;
+}
