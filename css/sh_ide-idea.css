@@ -3,8 +3,8 @@ pre.sh_sourceCode {
     color: #000000;
     font-weight: normal;
     font-style: normal;
-    font-family: Helvetica, sans-serif;
-    font-size: 12px;
+    font-family: 'georgia','bitstream vera serif',serif;
+    font-size: 16px;
 }
 
 pre.sh_sourceCode .sh_keyword {
