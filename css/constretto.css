@@ -19,12 +19,18 @@ h2 {
     font-weight:bold;
 }
 
-a {
+#menu a {
     font-size: 36px;
     color: rgb(81,82,84);
     padding-left: 40px;
     text-decoration: none;
 }
+
+a {
+    color: rgb(81,82,84);
+    text-decoration: none;
+}
+
 
 a:hover {
     text-decoration: underline;
@@ -65,6 +71,7 @@ a:hover {
 .toc li {
     list-style: none;
 }
+
 
 .section h1 {
     font-weight: bold;

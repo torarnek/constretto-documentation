@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Constretto</title>
+    <link rel="stylesheet" href="css/constretto.css"/>
+</head>
+
+<body>
+<h1>What is Constretto?</h1>
+
+<p>
+    Constretto is a Java framework providing a simple API for accessing configuration data from several different
+    sources like property files, Ini files and JavaBeans. It allows each configuration element to optionally be tagged,
+    in much
+    the same way as we are familiar from the web, with tags that Constretto later uses to resolve which value to use.
+</p>
+
+<p>
+    Constrettos main goal is to solve a common problem found in most enterprise Java applications :
+</p>
+<blockquote>"How can I deploy my application in several environments, without rebuilding it ?"</blockquote>
+
+<h2>Example Scenario</h2>
+
+<p>
+    We have a simple Java Web application for business managers where the manager can register contact information
+    on employees, so that she later easy can find an employees mobile phone number, if she needs to get in contact
+    with them. The application uses a Database to store employee data.
+</p>
+
+<p>When developing this application, we most likely need to deploy this application on several different servers,
+    the graph below shows a typical deployment scenario:</p>
+<img src="img/flow.gif" alt="typical deployment scenario"/>
+<p>
+    In the scenario above, we have a challenge, and that is "Wow do I manage my connection URL to the database without
+    rebuilding the war file for each environment ?"
+</p>
+<p>
+    Constretto answer to that question is tags. By tagging your configuration elements you may specify which value to
+    use in the different environments. How tags are defined varies in the different configuration sources, and the example
+    below shows how this is done with Ini files :
+</p>
+<pre class="sh_properties">
+    [development]
+      employee.db = jdbc:derby:target/employee;create=true
+    [test]
+      employee.db = jdbc:postgresql://testserver/employee
+    [preprod]
+      employee.db = jdbc:postgresql://preprodserver/employee
+    [production]
+      employee.db = jdbc:postgresql://production/employee
+</pre>
+
+<p>
+    Now that we have tagged our configuration, we can tell Constretto which tags to use when we start our application, and
+    the correct value for the connection url is chosen at runtime.
+</p>
+<p>
+    for further reading, please look at the <a href="quick-start.xhtml">Quick start guide</a> to get you started,
+    or the Reference manual for details.
+</p>
+</body>
+</html>
