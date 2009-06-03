@@ -21,9 +21,9 @@
 
 <div class="header"/>
 
-<p class="title">Constretto - Reference Manual ver. 1.0</p>
+<h1>Reference Manual ver. 1.0</h1>
 
-<div class="toc"/>
+<div id="toc" class="toc"/>
 
 <div class="section" id="introduction" title="Introduction">
 
@@ -98,37 +98,7 @@
     </div>
 
     <div class="subsection" id="javaBeans" title="JavaBeans">
-
-        <p class="example">Example JavaBean:</p>
-        <blockquote class="code java">
-            <p><span class="annotation">@ConfigurationSource</span>(basePath = <span
-                    class="value">"datasources.customer"</span>, tag = <span class="value">"development"</span>)</p>
-
-            <p><span class="reserved">public class</span> DevelopmentCustomerDataSourceConfigurer {</p>
-            <br></br>
-
-            <p><span class="reserved ident">public</span> String getUrl() {</p>
-
-            <p><span class="reserved ident ident-2">return</span> <span class="value">"development-url"</span>;</p>
-
-            <p><span class="ident">}</span></p>
-            <br></br>
-
-            <p><span class="reserved ident">public</span> String getUsername() {</p>
-
-            <p><span class="reserved ident-2">return</span> <span class="value">"development-username"</span>;</p>
-
-            <p><span class="ident">}</span></p>
-            <br></br>
-
-            <p><span class="reserved ident">public</span> String getPassword() {</p>
-
-            <p><span class="reserved ident-2">return</span> <span class="value">"development-password"</span>;</p>
-
-            <p><span class="ident">}</span></p>
-
-            <p>}</p>
-        </blockquote>
+        
     </div>
 </div>
 <pre class="sh_java">
@@ -157,5 +127,16 @@ public void simpleLookupForExistingKeyUsingDefaultValue() {
 
 <div class="section" id="bestPractices" title="Best Practices"></div>
 
+<script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-9153896-1");
+        pageTracker._trackPageview();
+    } catch(err) {
+    }
+</script>
 </body>
 </html>
