@@ -15,7 +15,7 @@
     function createSectionTiles(section, toc) {
         var title = section.attr('title');
         var id = section.attr('id');
-        section.prepend("<h1>" + title + "</h1>");
+        section.prepend("<h2>" + title + "</h2>");
         toc.append('<li class="section"><a href="#' + id + '">' + title + '</a></li>');
         section.find('.subsection').each(function() {
             createSubSectionTitles(jQuery(this), toc);
@@ -26,7 +26,7 @@
         var title = section.attr('title');
         var id = section.attr('id');
         toc.append('<li class="subsection"><a href="#' + id + '">' + title + '</a></li>');
-        section.prepend("<h2>" + title + "</h2>");
+        section.prepend("<h3>" + title + "</h3>");
     }
 
 })(jQuery);

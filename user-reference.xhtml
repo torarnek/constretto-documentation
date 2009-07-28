@@ -19,30 +19,88 @@
 
 <body>
 
-<div class="header"/>
-
 <h1>Reference Manual ver. 1.0</h1>
 
 <div id="toc" class="toc"/>
 
 <div class="section" id="introduction" title="Introduction">
 
-    Constretto is a configuration and assembly management framework for Java applications. bla bla
+    <p>
+        Constretto is a Java framework providing a simple API for accessing configuration data from several different
+        sources like property files, Ini files and JavaBeans. It allows each configuration element to optionally be
+        tagged,
+        in much
+        the same way as we are familiar from the web, with tags that Constretto later uses to resolve which value to
+        use.
+    </p>
+
+    <p>
+        Constrettos main goal is to solve a common problem found in most enterprise Java applications :
+    </p>
+    <blockquote>"How can I deploy my application in several environments, without rebuilding it ?"</blockquote>
+
+    <p>This reference manual describes in detail how Constretto can be configured and used in order to reach
+        that goal.
+    </p>
 
 </div>
 
 
 <div class="section" id="concepts" title="Concepts">
 
+    When configuring, using or extending Constretto there are some central concepts and vocabulary that Constretto
+    uses, and these will be covered in the following sub sections.
+
+
     <div class="subsection" id="configurationStore" title="Configuration Store">
-        Configuration Store acts as Constrettos bridge between different sources of configuration. There are 4
-        configuration stores delivered as a part of Constretto, and you may also implement your own store by
-        implementing the ConfigurationStore interface.
+
+        Configuration Store acts as Constrettos bridge between different sources of configuration. They are responsible
+        for loading configuration and translating it to the internal Constretto data model. Constretto does not enforce
+        any formal way of configuring the different stores, and you can create your own by simply impementing the
+        ConfigurationStore interface.
+
+        <p>
+            As a part of the core implementation of Constretto there are 4 implementations
+            available (Java property files, Ini files, Java Beans and System Properties), and how these are configured
+            are covered in later sections.
+        </p>
+
+        <p>
+            Constretto
+        </p>
     </div>
+
 
     <div class="subsection" id="expressions" title="Expressions">
+        When loading configuration from a Configuration Store, Constretto creates an internal tree repesentation of
+        your configuration. When you later want to navigate this tree, you use a Constretto expression to locate a value
+        or place a cursor on the current treenode. The syntax of the expressions is pretty simple, it uses a "."
+        to sepearate nodes in the tree. The example below shows how this is parsed by Constretto using a Java property
+        file.
+
+        <div class="example">
+            The following content in a property file:
+            <pre>
+                root.node=leaf1
+                root.node.child1=leaf2
+                root.node.chld2=leaf3
+            </pre>
+
+            Will create this configuration tree :
+            <pre>
+                .
+                `-- root
+                    `-- node
+                        |-- child1
+                        |   `-- leaf2
+                        |-- child2
+                        |   `-- leaf3
+                        `-- leaf1
+            </pre>
+        </div>
 
     </div>
+
 
     <div class="subsection" id="tags" title="Tags">
         <p>
@@ -65,7 +123,7 @@
             java -jar myapp.jar MyMain
         </pre>
 
-        
+
     </div>
     <div class="subsection" id="variableReplacement" title="Variable Replacement"></div>
     <div class="subsection" id="propertyOverriding" title="Property Overriding"></div>
@@ -98,7 +156,7 @@
     </div>
 
     <div class="subsection" id="javaBeans" title="JavaBeans">
-        
+
     </div>
 </div>
 <pre class="sh_java">
