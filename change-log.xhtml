@@ -13,12 +13,19 @@
 <body>
 <h1>Change log.</h1>
 
+<h2>1.0-rc-12 (20.dec-2009)</h2>
+<ul>
+    <li>!!commons-beanutils, and ini4j are now optional dependencies. If you use eighter ini files or object configuration, you will now need to add these as dependencies in your own pom. This is a change to the build dependencies, and can break your build!!</li>
+	<li>Spring 3 supported. Note if you need to use constretto test support. you need to use constretto-test with junit 4.4 (spring 2.5.x) or constretto-test-junit-4.5 with junit 4.5 (spring 3.x)</li>
+	<li> Fixed <a href="http://constretto.lighthouseapp.com/projects/30709/tickets/11">Constretto issue #11</a>
+</ul>
+
+
 <h2>1.0-rc-11 (26.okt-2009)</h2>
 <ul>
     <li>Fixed a bug in property placeholder. It did not work on class attributes in spring config</li>
 	<li>Fixed <a href="http://constretto.lighthouseapp.com/projects/30709/tickets/8">Constretto issue #8</a></li>
 	<li>Fixed <a href="http://constretto.lighthouseapp.com/projects/30709/tickets/7">Constretto issue #7</a></li>
-
 </ul>
 
 
