@@ -1,0 +1,99 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Constretto</title>
+    <link rel="stylesheet" href="css/constretto.css"/>
+</head>
+
+<body>
+<h1>Change log.</h1>
+
+<h2>1.0-rc-12 (20.dec-2009)</h2>
+<ul>
+    <li>!!commons-beanutils, and ini4j are now optional dependencies. If you use eighter ini files or object
+        configuration, you will now need to add these as dependencies in your own pom. This is a change to the build
+        dependencies, and can break your build!!
+    </li>
+    <li>Spring 3 supported. Note if you need to use constretto test support. you need to use constretto-test with junit
+        4.4 (spring 2.5.x) or constretto-test-junit-4.5 with junit 4.5 (spring 3.x)
+    </li>
+    <li> Fixed <a href="http://constretto.lighthouseapp.com/projects/30709/tickets/11">Constretto issue #11</a></li>
+</ul>
+
+
+<h2>1.0-rc-11 (26.okt-2009)</h2>
+<ul>
+    <li>Fixed a bug in property placeholder. It did not work on class attributes in spring config</li>
+    <li>Fixed <a href="http://constretto.lighthouseapp.com/projects/30709/tickets/8">Constretto issue #8</a></li>
+    <li>Fixed <a href="http://constretto.lighthouseapp.com/projects/30709/tickets/7">Constretto issue #7</a></li>
+</ul>
+
+
+<h2>1.0-rc-10 (07.sep-2009)</h2>
+<ul>
+    <li>Cleaning up for release</li>
+    <li>!!@Environment now have changed. does not any longer have a value and a list property, only value that may
+        contain a list. This is a change to the public API and can break your app!!
+    </li>
+</ul>
+
+<h2>1.0-rc-9 (01.sep-2009)</h2>
+<ul>
+    <li>Added possibility to use set multiple spring envs on startup. Much like the configuration tags</li>
+</ul>
+
+
+<h2>1.0-rc-8 (01.sep-2009)</h2>
+<ul>
+    <li>Added feature for conditional imports of spring files. Note this brings constretto spring schema to
+        constretto-1.1.xml
+    </li>
+</ul>
+
+<h2>1.0-rc-7 (31.aug-2009)</h2>
+<ul>
+    <li>Fixed bug in constretto-test, so that spring injection also works here</li>
+</ul>
+
+
+<h2>1.0-rc-6 (28.jul-2009)</h2>
+<ul>
+    <li>Added possibility to use @Environment as meta-annotation see <a
+            href="http://constretto.lighthouseapp.com/projects/30709/tickets/5-allow-to-use-environment-on-other-annotations-meta-annotation">Constretto
+        issue #5</a></li>
+</ul>
+
+
+<h2>1.0-rc-5 (2.jun-2009)</h2>
+<ul>
+    <li>Deployed Spring namespace schema to http://constretto.org/schema</li>
+    <li>!!Renamed constretto.xsd -> constretto-1.0.xsd, this is a change to the public api, and will break applications
+        using previous versions!!
+    </li>
+</ul>
+
+<h2>1.0-rc-4 (1.jun-2009)</h2>
+<ul>
+    <li>Added Junit testing support</li>
+    <li>Added @Tags that can be used to inject the current configured tags Constretto uses for value lookup</li>
+    <li>Now have more sensible error messages when PropertyPlaceholder cannot resolve values</li>
+    <li>!!Moved @Environment and AssemblyContextResolver from the constretto-api to constretto-spring. This is a change
+        to the public API and will break applications using previous versions!!
+    </li>
+</ul>
+
+
+<script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-9153896-1");
+        pageTracker._trackPageview();
+    } catch(err) {
+    }
+</script>
+</body>
+</html>
