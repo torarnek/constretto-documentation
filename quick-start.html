@@ -27,25 +27,38 @@
                 &lt;dependency&gt;
                     &lt;groupId&gt;org.constretto&lt;/groupId&gt;
                     &lt;artifactId&gt;constretto-api&lt;/artifactId&gt;
-                    &lt;version&gt;1.0-rc-12&lt;/version&gt;
+                    &lt;version&gt;1.0&lt;/version&gt;
                 &lt;/dependency&gt;
                 &lt;dependency&gt;
                     &lt;groupId&gt;org.constretto&lt;/groupId&gt;
                     &lt;artifactId&gt;constretto-core&lt;/artifactId&gt;
-                    &lt;version&gt;1.0-rc-12&lt;/version&gt;
+                    &lt;version&gt;1.0&lt;/version&gt;
                     &lt;scope&gt;runtime&lt;/scope&gt;
                 &lt;/dependency&gt;
                 ...
             &lt;/dependencies&gt;
         </pre>
 
-If you would like to use the Spring support add:
+If you would like to use the Constretto Junit support with junit 4.4 (spring 2.5.x) add:
+
         <pre class="sh_xml">
             &lt;dependency&gt;
                 &lt;groupId&gt;org.constretto&lt;/groupId&gt;
-                &lt;artifactId&gt;constretto-spring&lt;/artifactId&gt;
-                &lt;version&gt;1.0-rc-12&lt;/version&gt;
+                &lt;artifactId&gt;constretto-test&lt;/artifactId&gt;
+                &lt;version&gt;1.0&lt;/version&gt;
+                &lt;scope&gt;test&lt;/scope&gt;
             &lt;/dependency&gt;
+        </pre>
+
+If you would like to use the Constretto Junit support with junit 4.5 (spring 3.x) add:
+
+        <pre class="sh_xml">
+            &lt;dependency&gt;
+                &lt;groupId&gt;org.constretto&lt;/groupId&gt;
+                &lt;artifactId&gt;constretto-test-junit-4.5&lt;/artifactId&gt;
+                &lt;version&gt;1.0&lt;/version&gt;
+                &lt;scope&gt;test&lt;/scope&gt;
+            &lt;/dependency>
         </pre>
 
 These artifacts are currently not published to the main maven repository, so in order to download them add the following
