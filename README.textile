@@ -1,3 +1,3 @@
 h1. Constretto Documentation
 
-This repository contains the website located at "http://constretto.org":http://constretto.org
+ This repository contains the website located at "http://constretto.org":http://constretto.org
