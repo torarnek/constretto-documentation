@@ -110,13 +110,13 @@ repository definition in your pom:
 
 <h2>Add Configuration Instructions</h2>
 
+Configuration can be done through annotating methods and fields like this:
 
 <pre class="sh_java">
 	public class DataSourceConfiguration {
 
 	    private String myUrl;
-	    private String myPassword;
-	    
+	    private String myPassword;	    
 		
 	    @Configure
 	    public void configure(String url, @Configuration(expression = "password") String secret) {
@@ -131,11 +131,14 @@ repository definition in your pom:
 	    public String getPassword() {
 	        return myPassword;
 	    }
-
 	}
 </pre>
 
-<h2>Tell Constretto to inject configuration</h2>
+Constretto picks up these annotations and injects values from the configuration files.
+The <code>@Configure</code> annotation can be applied to public methods, including inherited methods from superclasses, while 
+the <code>@Configuration</code> annotation can be applied to private, public and default fields, including inherited fields from superclasses.
+
+<h2>Tell Constretto to Inject Values to the Configuration</h2>
 
 If you are using spring, this is done automaticly for you, but if you use the Java API, this is done as shown in the
 example below:
@@ -149,7 +152,7 @@ example below:
     }
 </pre>
 
-<h2>Tag your properties</h2>
+<h2>Tag Your Properties</h2>
 
 One of the key features of Constretto is the ability to tag properties in the property files. When no tag is present
 the value is considered default, but if tagged, it will only be available if your application is started with that
@@ -163,7 +166,7 @@ tag in the tags list (see next section)
     @some tag.key2 = value in tag "some tag" for key2
 </pre>
 
-<h2>Tell Constretto What Tags To Use When looking Up Values</h2>
+<h2>Tell Constretto What Tags to Use When Looking Up Values</h2>
 
 <pre class="sh_sh">
     java -jar myapp.jar MyMain -DCONSTRETTO_TAGS=development,linux,mock, some tag
